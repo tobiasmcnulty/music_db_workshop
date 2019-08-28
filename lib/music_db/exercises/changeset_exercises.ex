@@ -1,6 +1,6 @@
 defmodule MusicDB.Exercises.ChangesetExercises do
   import Ecto.Changeset
-  alias MusicDB.{Repo, Artist, Track}
+  alias MusicDB.{Album, Repo, Artist, Track}
 
   def create_changeset_for_artist(artist) do
     # create a changeset for the given Artist struct - your changeset should set
@@ -28,6 +28,7 @@ defmodule MusicDB.Exercises.ChangesetExercises do
   def create_album_for_artist(artist, album_title) do
     # use Ecto.build_assoc to create an %Album{} struct with the given title, whose
     # parent record is the given artist
+    Ecto.build_assoc(artist, :albums, %Album{title: album_title})
   end
 
   def create_child_records_with_put_assoc(artist, albums) do
@@ -36,6 +37,10 @@ defmodule MusicDB.Exercises.ChangesetExercises do
     #
     # Note that you will need to preload the album records for the artist struct before
     # attempting to call put_assoc
+    artist
+    |> Repo.preload(:albums)
+    |> change()
+    |> put_assoc(:albums, albums)
   end
 
   def create_child_records_with_cast_assoc(artist, albums) do
@@ -44,5 +49,9 @@ defmodule MusicDB.Exercises.ChangesetExercises do
     #
     # Note that you will need to preload the album records for the artist struct before
     # attempting to call cast_assoc
+    artist
+    |> Repo.preload(:albums)
+    |> cast(%{albums: albums}, [])
+    |> cast_assoc(:albums)
   end
 end

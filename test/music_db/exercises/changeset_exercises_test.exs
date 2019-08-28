@@ -35,7 +35,6 @@ defmodule ChangesetExercisesTest do
     assert Keyword.keys(changeset.errors) == [:duration]
   end
 
-  @tag :skip
   test "create a child record with build_assoc" do
     artist = Repo.insert!(%Artist{name: "Esperanza Spalding"})
     album = ChangesetExercises.create_album_for_artist(artist, "Jujo")
@@ -45,7 +44,6 @@ defmodule ChangesetExercisesTest do
     assert {:ok, _album} = Repo.insert(album)
   end
 
-  @tag :skip
   test "create child records with put_assoc" do
     artist = Repo.insert!(%Artist{name: "Gene Harris"})
     album1 = %Album{title: "Like A Lover"}
@@ -60,7 +58,6 @@ defmodule ChangesetExercisesTest do
     assert Enum.member?(titles, "In His Hands")
   end
 
-  @tag :skip
   test "create child records with cast_assoc" do
     artist = Repo.insert!(%Artist{name: "Gene Harris"})
     albums = [%{"title" => "Like A Lover"}, %{"title" => "In His Hands"}]
