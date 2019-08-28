@@ -19,11 +19,11 @@ defmodule MusicDB.Exercises.QueryExercises do
     # Define a query that selects all the artist birth_dates. Then use
     # Ecto.Adapters.SQL.to_sql(:all, Repo, query) to inspect the raw sql.
     q =
-      from(a in "artists",
+      from("artists",
         select: [:birth_date]
       )
 
-    Ecto.Adapters.SQL.to_sql(:all, Repo, q)
+    Repo.to_sql(:all, q)
   end
 
   def find_artist_by_name(name) do
