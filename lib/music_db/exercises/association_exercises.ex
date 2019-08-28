@@ -5,14 +5,24 @@ defmodule MusicDB.Exercises.AssociationExercises do
   def insert_album_and_release do
     # insert an album with the title "Giant Steps" along with an associated release with the
     # title "Giant Steps (remastered)"
+    a = Repo.insert!(%Album{title: "Giant Steps"})
+    Repo.insert!(%Release{title: "Giant Steps (remastered)", album: a})
   end
 
   def fetch_album_with_releases do
     # load the album with the title "Giant Steps" and make sure the releases are preloaded
+    q =
+      from(a in Album,
+        where: a.title == "Giant Steps",
+        preload: [:releases]
+      )
+
+    Repo.one(q)
   end
 
   def delete_album_and_release(album) do
     # delete the given album - make sure the association is setup so that the associated release
     # is deleted as well
+    Repo.delete!(album)
   end
 end
