@@ -67,7 +67,7 @@ defmodule MusicDB.Exercises.QueryExercises do
   def find_and_update_track!(title) do
     # Find a track by title and use Repo.update_all to set the title to "Rolling in the Deep"
     Repo.update_all(
-      from(t in "tracks", where: like(t.title, ^title)),
+      from(t in "tracks", where: t.title == ^title),
       set: [title: "Rolling in the Deep"]
     )
   end
@@ -77,7 +77,7 @@ defmodule MusicDB.Exercises.QueryExercises do
     q =
       from(
         t in "tracks",
-        where: like(t.title, ^title)
+        where: t.title == ^title
       )
 
     Repo.delete_all(q)
