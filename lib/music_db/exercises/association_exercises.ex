@@ -11,12 +11,15 @@ defmodule MusicDB.Exercises.AssociationExercises do
 
   def fetch_album_with_releases do
     # load the album with the title "Giant Steps" and make sure the releases are preloaded
+    # Alternative implementation:
+    # Repo.get_by(Album, title: "Giant Steps") |> Repo.preload(:releases)
     q =
       from(a in Album,
         where: a.title == "Giant Steps",
         preload: [:releases]
       )
 
+    # Repo.one will raise an error if more than 1 result
     Repo.one(q)
   end
 
