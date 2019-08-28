@@ -20,11 +20,9 @@ defmodule MusicDB.Exercises.SchemaExercises do
 
   def insert_a_track! do
     # Use Repo.insert! to insert a %Track{} with whatever title and index you like.
-
   end
 
   def delete_an_album!(album) do
     # Use Repo.delete to delete the album
-
   end
 end

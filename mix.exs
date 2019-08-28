@@ -40,5 +40,4 @@ defmodule MusicDB.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"]
     ]
   end
-
 end

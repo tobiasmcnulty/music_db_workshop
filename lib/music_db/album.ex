@@ -10,7 +10,6 @@ defmodule MusicDB.Album do
     belongs_to(:artist, Artist)
     has_many(:tracks, Track)
     many_to_many(:genres, Genre, join_through: "albums_genres")
-
   end
 
   def changeset(album, params) do

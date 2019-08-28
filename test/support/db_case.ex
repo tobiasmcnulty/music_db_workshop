@@ -20,5 +20,4 @@ defmodule MusicDB.DBCase do
 
     :ok
   end
-
 end

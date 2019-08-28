@@ -8,4 +8,3 @@ config :music_db, MusicDB.Repo,
   username: System.get_env("DATABASE_USERNAME") || whoami,
   password: System.get_env("DATABASE_PASSWORD") || nil,
   hostname: "localhost"
-

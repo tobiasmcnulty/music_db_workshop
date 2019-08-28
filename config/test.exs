@@ -10,4 +10,3 @@ config :music_db, MusicDB.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox,
   ownership_timeout: 60_000
-

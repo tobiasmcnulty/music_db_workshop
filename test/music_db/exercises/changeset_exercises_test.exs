@@ -58,7 +58,7 @@ defmodule ChangesetExercisesTest do
     assert {:ok, artist} = Repo.update(changeset)
     artist = Repo.preload(artist, :albums)
     assert Enum.count(artist.albums) == 2
-    titles = Enum.map(artist.albums, &(Map.get(&1, :title)))
+    titles = Enum.map(artist.albums, &Map.get(&1, :title))
     assert Enum.member?(titles, "Like A Lover")
     assert Enum.member?(titles, "In His Hands")
   end
@@ -72,9 +72,8 @@ defmodule ChangesetExercisesTest do
     assert {:ok, artist} = Repo.update(changeset)
     artist = Repo.preload(artist, :albums)
     assert Enum.count(artist.albums) == 2
-    titles = Enum.map(artist.albums, &(Map.get(&1, :title)))
+    titles = Enum.map(artist.albums, &Map.get(&1, :title))
     assert Enum.member?(titles, "Like A Lover")
     assert Enum.member?(titles, "In His Hands")
   end
-
 end

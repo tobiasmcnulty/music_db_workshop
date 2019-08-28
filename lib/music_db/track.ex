@@ -11,7 +11,5 @@ defmodule MusicDB.Track do
     timestamps()
 
     belongs_to(:album, Album)
-
   end
-
 end

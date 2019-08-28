@@ -10,7 +10,5 @@ defmodule MusicDB.Release do
   # and have a belongs_to association with albums - you'll also need to add a has_many
   # association between albums and releases
   schema "releases" do
-
   end
-
 end
