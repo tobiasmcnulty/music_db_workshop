@@ -11,7 +11,7 @@ defmodule MusicDB.Exercises.SchemaExercises do
     # Convert the query below to use the Artist schema.
     query =
       from(a in Artist,
-        where: a.birth_date >= ^~D[1990-11-15]
+        where: a.birth_date >= ^"1990-11-15"
       )
 
     Repo.all(query)
