@@ -5,13 +5,15 @@ defmodule MusicDB.Exercises.ChangesetExercises do
   def create_changeset_for_artist(artist) do
     # create a changeset for the given Artist struct - your changeset should set
     # the name to "Sarah Vaughan"
-    Artist.changeset(artist, %{name: "Sarah Vaughan"})
+    # Artist.changeset(artist, %{name: "Sarah Vaughan"})
+    change(artist, name: "Sarah Vaughan")
   end
 
   def create_changeset_from_map(params) do
     # create a changeset for an Artist struct using the given params, but ONLY allow
     # the name, and birth_date values
-    Artist.changeset(%Artist{}, Map.take(params, [:name, :birth_date]))
+    # Artist.changeset(%Artist{}, Map.take(params, [:name, :birth_date]))
+    cast(%Artist{}, params, [:name, :birth_date])
   end
 
   def changeset_for_track(track, params) do
