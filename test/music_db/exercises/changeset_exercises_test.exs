@@ -3,21 +3,18 @@ defmodule ChangesetExercisesTest do
   alias MusicDB.Exercises.ChangesetExercises
   alias MusicDB.{Artist, Album, Track}
 
-  @tag :skip
   test "create a changeset from an Artist struct" do
     changeset = ChangesetExercises.create_changeset_for_artist(%Artist{})
     assert changeset.changes == %{name: "Sarah Vaughan"}
   end
 
-  @tag :skip
   test "create a changeset from a map" do
-    params = %{name: "Bobby Hutcherson", birth_date: "1941-01-27", instrument: "vibraphone"}
+    params = %{name: "Bobby Hutcherson", birth_date: "1941-01-27", death_date: "2016-08-15"}
     changeset = ChangesetExercises.create_changeset_from_map(params)
     assert changeset.data == %Artist{}
     assert changeset.changes == %{name: "Bobby Hutcherson", birth_date: ~D[1941-01-27]}
   end
 
-  @tag :skip
   test "create changeset for Track" do
     valid_params = %{title: "Walkin'", duration: 896}
     changeset = ChangesetExercises.changeset_for_track(%Track{}, valid_params)

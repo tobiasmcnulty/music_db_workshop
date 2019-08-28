@@ -1,15 +1,17 @@
 defmodule MusicDB.Exercises.ChangesetExercises do
   import Ecto.Changeset
-  alias MusicDB.{Repo, Artist}
+  alias MusicDB.{Repo, Artist, Track}
 
   def create_changeset_for_artist(artist) do
     # create a changeset for the given Artist struct - your changeset should set
     # the name to "Sarah Vaughan"
+    Artist.changeset(artist, %{name: "Sarah Vaughan"})
   end
 
   def create_changeset_from_map(params) do
     # create a changeset for an Artist struct using the given params, but ONLY allow
     # the name, and birth_date values
+    Artist.changeset(%Artist{}, Map.take(params, [:name, :birth_date]))
   end
 
   def changeset_for_track(track, params) do
@@ -18,6 +20,7 @@ defmodule MusicDB.Exercises.ChangesetExercises do
     #   - allow only the title and duration values
     #   - require title and duration values
     #   - require that the duration value be greater than 0
+    Track.changeset(track, params)
   end
 
   def create_album_for_artist(artist, album_title) do

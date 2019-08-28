@@ -1,5 +1,6 @@
 defmodule MusicDB.Track do
   use Ecto.Schema
+  import Ecto.Changeset
   alias MusicDB.Album
 
   schema "tracks" do
@@ -11,5 +12,13 @@ defmodule MusicDB.Track do
     timestamps()
 
     belongs_to(:album, Album)
+  end
+
+  def changeset(track, params) do
+    track
+    |> cast(params, [:title, :duration])
+    |> validate_required([:title])
+    |> validate_required([:duration])
+    |> validate_number(:duration, greater_than: 0)
   end
 end
